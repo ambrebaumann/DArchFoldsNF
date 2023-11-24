@@ -11,13 +11,14 @@ process createDB {
     publishDir 'database_mmseqs/createDB', mode: 'copy'
 
     input: 
-        path fasta_file
+        path fasta_file_first_db
+        path fasta_file_second_db
 
     output:
         path "db*"
     
     script:
     """
-    /MMseqs2/build/bin/mmseqs createdb ${fasta_file.join(' ')} db
+    /MMseqs2/build/bin/mmseqs createdb ${fasta_file_first_db.join(' ')} ${fasta_file_second_db.join(' ')} db
     """
 }

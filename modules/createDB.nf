@@ -8,7 +8,7 @@ process createDB {
         - db : database in the MMseqs2 format
     */
     label 'createDB'
-    publishDir 'database_mmseqs/createDB', mode: 'copy'
+    publishDir 'data/database_mmseqs/createDB', mode: 'copy'
 
     input: 
         path fasta_file_first_db

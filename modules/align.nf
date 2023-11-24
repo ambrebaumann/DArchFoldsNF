@@ -9,7 +9,7 @@ process align {
         - db_align : aligned database in the MMseqs2 format
     */
     label 'align'
-    publishDir 'database_mmseqs/align', mode: 'copy'
+    publishDir 'data/database_mmseqs/align', mode: 'copy'
 
     input: 
         path db

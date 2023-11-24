@@ -11,7 +11,7 @@ process cluster {
         - db_clu : clustered database in the MMseqs2 format
     */
     label 'cluster'
-    publishDir 'database_mmseqs/cluster', mode: 'copy'
+    publishDir 'data/database_mmseqs/cluster', mode: 'copy'
 
     input: 
         path db

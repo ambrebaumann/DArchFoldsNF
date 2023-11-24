@@ -1,6 +1,5 @@
 // Import the different processes
-include { createID_files as createID_files_firstDB} from './modules/createID_files'
-include { createID_files as createID_files_secondDB} from './modules/createID_files'
+include { createID_files as createID_files} from './modules/createID_files'
 include { createDB } from './modules/createDB'
 include { cluster } from './modules/cluster'
 include { createtsv } from './modules/createtsv'
@@ -10,9 +9,8 @@ include { align_output_pos } from './modules/align_output_pos'
 
 // Definition of the workflow
 workflow {
-    // Create the id files from the fasta files
-    createID_files_firstDB(Channel.fromPath(params.fasta_file_first_db).collect(), params.nameFirstDB)
-    createID_files_secondDB(Channel.fromPath(params.fasta_file_second_db).collect(), params.nameSecondDB)
+    // Create the id file and the length file from the fasta files
+    createID_files(Channel.fromPath(params.fasta_file_first_db).collect(), params.nameFirstDB)
 
     // Create the database in the MMseqs2 format from fasta files
     createDB(Channel.fromPath(params.fasta_file_first_db).collect(), Channel.fromPath(params.fasta_file_second_db).collect())

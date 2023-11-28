@@ -1,5 +1,5 @@
 // Import the different processes
-include { createID_files as createID_files} from './modules/createID_files'
+include { createID_files } from './modules/createID_files'
 include { createDB } from './modules/createDB'
 include { cluster } from './modules/cluster'
 include { createtsv } from './modules/createtsv'

@@ -40,7 +40,7 @@ workflow {
                 align(db, db_clu)
                 align_output_pos(db, align.out)
             }
-        }
+        } 
     }
 }
 

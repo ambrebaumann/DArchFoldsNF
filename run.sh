@@ -5,5 +5,5 @@ nextflow main.nf    \
     --identity 0.4 \
     --covMode 2 \
     --nameFirstDB firstDB \
-    --doAlignForCovId false \
-    --doAlignForPos false 
+    --doAlignForCovId true \
+    --doAlignForPos true

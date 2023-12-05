@@ -1,5 +1,5 @@
 
-process createID_files {
+process createID_len_files {
     /*
     Create the id file and the length file from the fasta files
     Inputs :
@@ -10,7 +10,7 @@ process createID_files {
         - nameDB_len.tsv : tsv file with the id and the length of each sequence
     */
 
-    label 'createID_files'
+    label 'createID_len_files'
     publishDir 'data/my_db', mode: 'copy'
 
     input: 
@@ -23,16 +23,14 @@ process createID_files {
     
     script:
     """
-    #!/usr/bin/env python3
+    #!/usr/bin/env python
     from Bio import SeqIO
     
-    with open("${nameDB}"+"_id.txt", "w") as f:
-        for seq_record in SeqIO.parse("${fasta_file}", "fasta"):
-            f.write(f"{str(seq_record.id)}\\n")
-    
-    with open("${nameDB}"+"_len.tsv", "w") as f:
-        for seq_record in SeqIO.parse("${fasta_file}", "fasta"):
-            f.write(f"{str(seq_record.id)}\\t{len(str(seq_record.seq))}\\n")
+    with open("${nameDB}"+"_id.txt", "w") as id_file:
+        with open("${nameDB}"+"_len.tsv", "w") as len_file:
+            for seq_record in SeqIO.parse("${fasta_file}", "fasta"):
+                id_file.write(f"{str(seq_record.id)}\\n")
+                len_file.write(f"{str(seq_record.id)}\\t{len(str(seq_record.seq))}\\n")
     
     """
 }

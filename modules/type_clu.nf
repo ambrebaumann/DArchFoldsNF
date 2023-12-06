@@ -1,5 +1,15 @@
 
 process type_clu {
+    /*
+    Type the clusters
+    Inputs :
+        - clu : tsv file
+        - type_clu_script : script to type the clusters
+        - id_first_db : id file of the first database
+        - nameDB : name of the first database
+    Output :
+        - tsv file with the type of the clusters
+    */
 
     label 'type_clu'
     publishDir 'results', mode: 'copy'

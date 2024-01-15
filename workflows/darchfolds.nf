@@ -1,4 +1,3 @@
-// TO FINISHHHHHHH
 include { preprocessing } from '../subworkflows/preprocessing'
 include { usingMMseqs2 } from '../subworkflows/using_mmseqs2'
 include { clusterAnalysis } from '../subworkflows/cluster_analysis'

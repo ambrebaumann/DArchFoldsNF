@@ -1,26 +1,15 @@
 // Import the different processes
-include { createDB } from '../modules/createDB'
-include { cluster } from '../modules/cluster'
-include { createtsv } from '../modules/createtsv'
 include { align } from '../modules/align'
 include { align_output_cov_id } from '../modules/align_output_cov_id'
 include { align_output_pos } from '../modules/align_output_pos'
 
-//Definition of the subworkflow usingMMseqs2
-workflow usingMMseqs2 {
+//Definition of the subworkflow Alignment
+workflow alignment {
+    take:
+        db
+        db_clu
+
     main:
-    // Create the database in the MMseqs2 format from fasta files
-    createDB(Channel.fromPath(params.fasta_file_first_db).collect(), Channel.fromPath(params.fasta_file_second_db).collect())
-    db = createDB.out
-
-    // Cluster the database
-    cluster(db, params.coverage, params.identity, params.covMode)
-    db_clu = cluster.out
-
-    // Create the tsv file from the clustered database
-    createtsv(db, db_clu)
-    clu = createtsv.out
-
     // Align if the user wants to have more outputs about the clusters
     // If the users wants to have outputs for the coverage, the identity and the position
     if (params.doAlignForCovId == true && params.doAlignForPos == true){
@@ -39,7 +28,5 @@ workflow usingMMseqs2 {
             }
         } 
     }
-
-    emit:
-        clu
 }
+

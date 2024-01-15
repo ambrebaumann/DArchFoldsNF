@@ -8,7 +8,7 @@ workflow clusterAnalysis {
 
     main:
     // Type the clusters
-    type_clu(clu, Channel.fromPath(params.type_clu_script), id_first_db, params.nameFirstDB)
+    type_clu(clu, Channel.fromPath(params.type_clu_script), id_first_db, params.yourDB)
     clu_analysis = type_clu.out
 
     emit:

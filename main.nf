@@ -47,7 +47,7 @@ workflow {
 }
 
 // Show help message
-if (params.help) {
+if (params.help == true) {
     helpMessage()
     exit 0
 }

@@ -7,7 +7,7 @@ include { createtsv } from '../modules/createtsv'
 workflow createClusters {
     main:
     // Create the database in the MMseqs2 format from fasta files
-    createDB(Channel.fromPath(params.fasta_file_first_db).collect(), Channel.fromPath(params.fasta_file_second_db).collect())
+    createDB(Channel.fromPath(params.fasta_file_your_db).collect(), Channel.fromPath(params.fasta_file_afdb).collect())
     db = createDB.out
 
     // Cluster the database

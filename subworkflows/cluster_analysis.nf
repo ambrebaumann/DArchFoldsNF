@@ -4,13 +4,13 @@ include { type_clu } from '../modules/type_clu'
 workflow clusterAnalysis {
     take:
         clu
-        id_first_db
+        id_db
 
     main:
     // Type the clusters
-    type_clu(clu, Channel.fromPath(params.type_clu_script), id_first_db, params.yourDB)
-    clu_analysis = type_clu.out
+    type_clu(clu, Channel.fromPath(params.type_clu_script), id_db, params.yourDB)
+    seq_clu_analysis = type_clu.out
 
     emit:
-        clu_analysis
+        seq_clu_analysis
 }

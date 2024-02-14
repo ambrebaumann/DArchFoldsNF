@@ -6,7 +6,7 @@ process type_clu {
         - clu : tsv file
         - type_clu_script : script to type the clusters
         - id_first_db : id file of the first database
-        - nameDB : name of the first database
+        - nameDB : name of your database
     Output :
         - tsv file with the type of the clusters
     */
@@ -17,16 +17,15 @@ process type_clu {
     input: 
         path clu
         path type_clu_script
-        path id_first_db
+        path id_db
         val nameDB
-
 
     output:
         path "*.tsv"
     
     script:
     """
-    python $type_clu_script $clu $id_first_db $nameDB all_clu_type_size_nb.tsv
+    python $type_clu_script $clu $id_db $nameDB all_seq_clu_type_size_nb.tsv
     """
 }
 

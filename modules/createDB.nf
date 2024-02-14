@@ -8,17 +8,17 @@ process createDB {
         - db : database in the MMseqs2 format
     */
     label 'createDB'
-    publishDir 'data/database_mmseqs/createDB', mode: 'copy'
+    publishDir 'data/database_mmseqs/db', mode: 'copy'
 
     input: 
-        path fasta_file_first_db
-        path fasta_file_second_db
+        path fasta_file_your_db
+        path fasta_file_afdb
 
     output:
         path "db*"
     
     script:
     """
-    /MMseqs2/build/bin/mmseqs createdb ${fasta_file_first_db.join(' ')} ${fasta_file_second_db.join(' ')} db
+    /MMseqs2/build/bin/mmseqs createdb ${fasta_file_your_db.join(' ')} ${fasta_file_afdb.join(' ')} db
     """
 }

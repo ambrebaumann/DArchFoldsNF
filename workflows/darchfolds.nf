@@ -26,7 +26,12 @@ workflow darchfolds {
     seq_clu_analysis = clusterAnalysis.out.seq_clu_analysis
 
     // Choose the representative of each cluster
-    chooseRep(seq_clu_analysis, len_db)
+    name_choose_rep_file = "all_seq_clu_plddt_len.tsv"
+    output_choose_rep_file_name = "seq_clu_annot.tsv"
+    log_file_name = "seq_clu_annot.log"
+    chooseRep(seq_clu_analysis, id_db, len_db, name_choose_rep_file, output_choose_rep_file_name, log_file_name)
     choose_rep_file = chooseRep.out.choose_rep_file
+    choose_rep = chooseRep.out.choose_rep
+
 
 }

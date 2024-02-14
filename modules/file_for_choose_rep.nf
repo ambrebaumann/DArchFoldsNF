@@ -2,7 +2,7 @@
 process file_for_choose_rep {
 
     label 'file_for_choose_rep'
-    publishDir 'results', mode: 'copy'
+    publishDir 'results/changeRepCluSeq', mode: 'copy'
 
     input: 
         path seq_clu_analysis
@@ -11,12 +11,13 @@ process file_for_choose_rep {
         path afdb_plddt
         path len_db
         val nameDB
+        val name_choose_rep_file
 
     output:
         path "*.tsv"
     
     script:
     """
-    python $file_choose_rep_script $seq_clu_analysis $afdb_len $afdb_plddt $len_db $nameDB all_seq_clu_plddt_len.tsv
+    python $file_choose_rep_script $seq_clu_analysis $afdb_len $afdb_plddt $len_db $nameDB $name_choose_rep_file
     """
 }

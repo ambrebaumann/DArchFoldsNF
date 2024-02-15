@@ -22,13 +22,13 @@ process type_clu {
         val scale
 
     output:
-        path "${scale}/changeRepClu${scale}/*.tsv"
+        path "${scale}/*.tsv"
     
     script:
     """
     mkdir -p "$scale"
     mkdir -p "$scale/changeRepClu$scale"
-    python $type_clu_script $clu $id_db $nameDB $scale/changeRepClu$scale/all_${scale}_clu_type_size_nb.tsv
+    python $type_clu_script $clu $id_db $nameDB $scale/all_${scale}_clu_type_size_nb.tsv
     """
 }
 

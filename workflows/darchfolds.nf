@@ -3,6 +3,7 @@ include { createClusters } from '../subworkflows/create_clusters'
 include { alignment } from '../subworkflows/alignment'
 include { clusterAnalysis } from '../subworkflows/cluster_analysis'
 include { chooseRep } from '../subworkflows/choose_rep'
+include { structClustering } from '../subworkflows/struct_clustering'
 
 // Definition of the workflow
 workflow darchfolds {
@@ -32,6 +33,13 @@ workflow darchfolds {
     chooseRep(seq_clu_analysis, id_db, len_db, name_choose_rep_file, output_choose_rep_file_name, log_file_name)
     choose_rep_file = chooseRep.out.choose_rep_file
     choose_rep = chooseRep.out.choose_rep
+    choose_rep_log = chooseRep.out.choose_rep_log
+    choose_rep_reduced = chooseRep.out.choose_rep_reduced
+    choose_rep_mb = chooseRep.out.choose_rep_mb
 
+    // Clustering of the structures with the foldseek file
+    structClustering(choose_rep_mb)
+    clu_one_line = structClustering.out.clu_one_line
+    clu_struct = structClustering.out.clu_struct
 
 }

@@ -12,7 +12,10 @@ process choose_rep_mod {
         val log_file_name
 
     output:
-        path "*"
+        path "*annot.tsv"
+        path "*annot_reduced.tsv"
+        path "*annot_rep_mb.tsv"
+        path "*log"
     
     script:
     """

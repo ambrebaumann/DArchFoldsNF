@@ -18,10 +18,13 @@ workflow chooseRep {
 
     // Choose the representative of each cluster
     choose_rep_mod(Channel.fromPath(params.choose_rep_script), choose_rep_file, id_db, output_choose_rep_file_name, log_file_name)
-    choose_rep = choose_rep_mod.out
+    (choose_rep, choose_rep_reduced, choose_rep_mb, choose_rep_log) = choose_rep_mod.out
 
     emit:
         choose_rep_file
         choose_rep
+        choose_rep_log
+        choose_rep_reduced
+        choose_rep_mb
 }
 

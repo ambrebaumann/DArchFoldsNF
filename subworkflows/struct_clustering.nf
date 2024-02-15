@@ -1,6 +1,8 @@
+// Import the different processes
 include { modify_fs } from '../modules/modify_fs'
 include { create_all_cc } from '../modules/create_all_cc'
 
+// Definition of the subworkflow structClustering
 workflow structClustering {
     take:
         choose_rep

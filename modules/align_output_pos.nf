@@ -9,7 +9,7 @@ process align_output_pos {
         - align_output_pos.tsv : tsv file
     */
     label 'align_output_pos'
-    publishDir 'results', mode: 'copy'
+    publishDir 'results/Seq/alignment', mode: 'copy'
 
     input: 
         path db

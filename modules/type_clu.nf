@@ -5,7 +5,7 @@ process type_clu {
     Inputs :
         - clu : tsv file
         - type_clu_script : script to type the clusters
-        - id_first_db : id file of the first database
+        - id_db : id file of the first database
         - nameDB : name of your database
     Output :
         - tsv file with the type of the clusters
@@ -19,13 +19,16 @@ process type_clu {
         path type_clu_script
         path id_db
         val nameDB
+        val scale
 
     output:
-        path "*.tsv"
+        path "${scale}/changeRepClu${scale}/*.tsv"
     
     script:
     """
-    python $type_clu_script $clu $id_db $nameDB all_seq_clu_type_size_nb.tsv
+    mkdir -p "$scale"
+    mkdir -p "$scale/changeRepClu$scale"
+    python $type_clu_script $clu $id_db $nameDB $scale/changeRepClu$scale/all_${scale}_clu_type_size_nb.tsv
     """
 }
 

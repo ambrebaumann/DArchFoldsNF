@@ -1,6 +1,7 @@
+// Import the different processes
 include { createID_len_files } from '../modules/createID_len_files'
 
-// Definition of the workflow
+// Definition of the subworkflow preprocessing
 workflow preprocessing {
     main:
     // Create the id file and the length file from the fasta files

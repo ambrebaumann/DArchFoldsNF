@@ -1,10 +1,18 @@
 
 process modify_fs {
-
-    clusterOptions "-N split_files -l ncpus=1 -l mem=200Gb -l walltime=300:00:00 -q bim"
+    /*
+    Modify the foldseek clustering of the AFDB to clusterize your database based on structure.
+    Inputs :
+        - modify_fs_script : python script
+        - choose_rep : file created by the choose_rep_mod subwf
+        - fs_file : foldseek clustering of the AFDB
+    Output :
+        - foldseek_corrected.tsv : file with the corrected foldseek clustering
+    */
+    clusterOptions "-N modify_fs -l ncpus=1 -l mem=200Gb -l walltime=300:00:00 -q bim"
 
     label 'modify_fs'
-    publishDir 'results', mode: 'copy'
+    publishDir 'data/afdb', mode: 'copy'
 
     input: 
         path modify_fs_script

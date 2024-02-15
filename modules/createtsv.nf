@@ -9,17 +9,17 @@ process createtsv {
         - result_clu.tsv : tsv file
     */
     label 'createtsv'
-    publishDir 'results', mode: 'copy'
+    publishDir 'results/seq', mode: 'copy'
 
     input: 
         path db
         path db_clu
 
     output:
-        path "result_clu.tsv"
+        path "result_seq_clu.tsv"
     
     script:
     """
-    /MMseqs2/build/bin/mmseqs createtsv db db db_clu result_clu.tsv
+    /MMseqs2/build/bin/mmseqs createtsv db db db_clu result_seq_clu.tsv
     """
 }

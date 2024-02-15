@@ -5,4 +5,4 @@ data/database_mmseqs/
 results/
 data/my_db/*txt
 data/my_db/*tsv
-dag.svg
+dag*.svg

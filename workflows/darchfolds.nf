@@ -1,3 +1,4 @@
+// Import the different subworkflows
 include { preprocessing                         } from '../subworkflows/preprocessing'
 include { createClusters                        } from '../subworkflows/create_clusters'
 include { alignment                             } from '../subworkflows/alignment'
@@ -9,6 +10,10 @@ include { structClustering                      } from '../subworkflows/struct_c
 
 // Definition of the workflow
 workflow darchfolds {
+    //////////////////////////////////////////
+    ////////////////SEQUENCES/////////////////
+    //////////////////////////////////////////
+    seq = "Seq"
 
     //////////////////////////////////////////
     // Create the id file and the length file from the fasta files
@@ -30,26 +35,28 @@ workflow darchfolds {
 
     //////////////////////////////////////////
     // Type the clusters
-    analyseCluSeq(clu, id_db)
+    analyseCluSeq(clu, id_db, seq)
     seq_clu_analysis = analyseCluSeq.out.clu_analysis
 
     //////////////////////////////////////////
     // Choose the representative of each cluster of sequences
-    seq_name_choose_rep_file = "all_seq_clu_plddt_len.tsv"
-    seq_output_choose_rep_file_name = "seq_clu_annot.tsv"
-    seq_log_file_name = "seq_clu_annot.log"
-    chooseRepSeq(seq_clu_analysis, id_db, len_db, seq_name_choose_rep_file, seq_output_choose_rep_file_name, seq_log_file_name, "changeRepCluSeq")
+    chooseRepSeq(seq_clu_analysis, id_db, len_db, seq)
     // Need 
-    choose_rep_mb = chooseRepSeq.out.choose_rep_mb
+    seq_choose_rep_mb = chooseRepSeq.out.choose_rep_mb
     // Don't need
-    choose_rep_file = chooseRepSeq.out.choose_rep_file
-    choose_rep = chooseRepSeq.out.choose_rep
-    choose_rep_log = chooseRepSeq.out.choose_rep_log
-    choose_rep_reduced = chooseRepSeq.out.choose_rep_reduced
+    seq_choose_rep_file = chooseRepSeq.out.choose_rep_file
+    seq_choose_rep = chooseRepSeq.out.choose_rep
+    seq_choose_rep_log = chooseRepSeq.out.choose_rep_log
+    seq_choose_rep_reduced = chooseRepSeq.out.choose_rep_reduced
     
     //////////////////////////////////////////
+    ////////////////STRUCTURES////////////////
+    //////////////////////////////////////////
+    struct = "Struct"
+
+    //////////////////////////////////////////
     // Clustering of the structures with the foldseek file
-    structClustering(choose_rep_mb)
+    structClustering(seq_choose_rep_mb)
     // Need
     clu_struct = structClustering.out.clu_struct
     // Don't need
@@ -57,17 +64,18 @@ workflow darchfolds {
     
     //////////////////////////////////////////
     // Analysis of the structural clusters
-    analyseCluStruct(clu_struct, id_db)
+    analyseCluStruct(clu_struct, id_db, struct)
     struct_clu_analysis = analyseCluStruct.out.clu_analysis
 
     //////////////////////////////////////////
     // Choose the representative of each structural cluster
-    struct_name_choose_rep_file = "all_struct_clu_plddt_len.tsv"
-    struct_output_choose_rep_file_name = "struct_clu_annot.tsv"
-    struct_log_file_name = "struct_clu_annot.log"
-    chooseRepStruct(struct_clu_analysis, id_db, len_db, struct_name_choose_rep_file, struct_output_choose_rep_file_name, struct_log_file_name, "changeRepCluStruct")
-    // Need
+    chooseRepStruct(struct_clu_analysis, id_db, len_db, struct)
+    // Need 
     // Don't need
-
+    struct_choose_rep_mb = chooseRepStruct.out.choose_rep_mb
+    struct_choose_rep_file = chooseRepStruct.out.choose_rep_file
+    struct_choose_rep = chooseRepStruct.out.choose_rep
+    struct_choose_rep_log = chooseRepStruct.out.choose_rep_log
+    struct_choose_rep_reduced = chooseRepStruct.out.choose_rep_reduced
 }
     

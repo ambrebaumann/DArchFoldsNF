@@ -5,3 +5,4 @@ rm -rf results/
 rm data/my_db/*txt
 rm data/my_db/*tsv
 rm dag.svg
+rm .DS_Store

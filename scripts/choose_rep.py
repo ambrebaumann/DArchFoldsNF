@@ -159,8 +159,8 @@ def main() :
     clu_rep_mb = create_the_two_df[2] # Create the dataframe with the new representant and the member
 
     clu.to_csv(complete_output_file, sep='\t', index=False) # Write the dataframe in a tsv file
-    clu_reduced.to_csv(complete_output_file.replace(".tsv", "annot_reduced.tsv"), sep='\t', index=False) # Write the reduced dataframe in a tsv file
-    clu_rep_mb.to_csv(complete_output_file.replace(".tsv", "annot_rep_mb.tsv"), sep='\t', index=False) # Write the dataframe with the new representant and the member in a tsv file
+    clu_reduced.to_csv(complete_output_file.replace("annot.tsv", "annot_reduced.tsv"), sep='\t', index=False) # Write the reduced dataframe in a tsv file
+    clu_rep_mb.to_csv(complete_output_file.replace("annot.tsv", "annot_rep_mb.tsv"), sep='\t', index=False) # Write the dataframe with the new representant and the member in a tsv file
 
 
     create_log_file_for_sd_plddt_thr(clu, path_log_file, 10) # Create the log file

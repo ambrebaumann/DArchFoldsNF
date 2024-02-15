@@ -2,7 +2,7 @@
 process file_for_choose_rep {
 
     label 'file_for_choose_rep'
-    publishDir 'results/changeRepCluSeq', mode: 'copy'
+    publishDir 'results', mode: 'copy'
 
     input: 
         path seq_clu_analysis

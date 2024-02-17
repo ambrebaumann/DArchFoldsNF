@@ -1,6 +1,7 @@
 // Import the different processes
 include { file_for_choose_rep } from '../modules/file_for_choose_rep'
 include { choose_rep_mod } from '../modules/choose_rep_mod'
+include { plot } from '../modules/plot'
 
 // Definition of the subworkflow chooseRep
 workflow chooseRep {
@@ -17,7 +18,10 @@ workflow chooseRep {
 
     // Choose the representative of each cluster
     choose_rep_mod(Channel.fromPath(params.choose_rep_script), choose_rep_file, id_db, scale)
-    (choose_rep, choose_rep_reduced, choose_rep_mb, choose_rep_log) = choose_rep_mod.out
+    (choose_rep, choose_rep_reduced, choose_rep_mb, choose_rep_log) = choose_rep_mod.output
+
+    // Plot
+    plot(Channel.fromPath(params.analysis_plot), choose_rep, scale)
 
     emit:
         choose_rep_file

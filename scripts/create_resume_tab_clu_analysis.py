@@ -45,8 +45,8 @@ def create_resume_df(clu_analysis_path, id_set, nameDB) :
     
     grouped = clu.groupby('Case').agg(
     nb_clu=('Representative', 'nunique'),
-    nb_myDB=(f'nb_{nameDB}', lambda x: (x == True).sum()),
-    nb_AFDB=(f'nb_{nameDB}', lambda x: (x == False).sum())
+    nb_myDB=('Is_DF', lambda x: (x == True).sum()),
+    nb_AFDB=('Is_DF', lambda x: (x == False).sum())
     )
 
     total_nb_myDB = grouped[f'nb_{nameDB}'].sum()

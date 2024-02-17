@@ -36,7 +36,10 @@ workflow darchfolds {
     //////////////////////////////////////////
     // Type the clusters
     analyseCluSeq(clu, id_db, seq)
+    // Need
     seq_clu_analysis = analyseCluSeq.out.clu_analysis
+    // Don't need
+    seq_resume_tab = analyseCluSeq.out.resume_tab_file
 
     //////////////////////////////////////////
     // Choose the representative of each cluster of sequences
@@ -65,7 +68,10 @@ workflow darchfolds {
     //////////////////////////////////////////
     // Analysis of the structural clusters
     analyseCluStruct(clu_struct, id_db, struct)
+    // Need
     struct_clu_analysis = analyseCluStruct.out.clu_analysis
+    // Don't need
+    struct_resume_tab = analyseCluStruct.out.resume_tab_file
 
     //////////////////////////////////////////
     // Choose the representative of each structural cluster

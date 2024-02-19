@@ -9,7 +9,7 @@ process createtsv {
         - result_clu.tsv : tsv file
     */
     label 'createtsv'
-    publishDir 'results/seq', mode: 'copy'
+    publishDir 'results/Seq', mode: 'copy'
 
     input: 
         path db

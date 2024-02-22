@@ -20,6 +20,6 @@ process createtsv {
     
     script:
     """
-    /MMseqs2/build/bin/mmseqs createtsv db db db_clu result_seq_clu.tsv
+    /MMseqs2/build/bin/mmseqs createtsv db db db_clu result_seq_clu.tsv > createTsv.log
     """
 }

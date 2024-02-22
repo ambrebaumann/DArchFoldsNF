@@ -20,6 +20,6 @@ process align_output_pos {
     
     script:
     """
-    /MMseqs2/build/bin/mmseqs convertalis db db db_align align_output_pos.tsv --format-output "query,target,qstart,qend,tstart,tend" --format-mode 4
+    /MMseqs2/build/bin/mmseqs convertalis db db db_align align_output_pos.tsv --format-output "query,target,qstart,qend,tstart,tend" --format-mode 4 > align_output_pos.log
     """
 }

@@ -19,6 +19,6 @@ process createDB {
     
     script:
     """
-    /MMseqs2/build/bin/mmseqs createdb ${fasta_file_your_db.join(' ')} ${fasta_file_afdb.join(' ')} db
+    /MMseqs2/build/bin/mmseqs createdb ${fasta_file_your_db.join(' ')} ${fasta_file_afdb.join(' ')} db > createDB.log
     """
 }

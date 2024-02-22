@@ -20,7 +20,7 @@ process align {
     
     script:
     """
-    /MMseqs2/build/bin/mmseqs align db db db_clu db_align -a -v 2
+    /MMseqs2/build/bin/mmseqs align db db db_clu db_align -a -v 2 > db_align.log
     """
 }
 

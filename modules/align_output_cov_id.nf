@@ -20,6 +20,6 @@ process align_output_cov_id {
     
     script:
     """
-    /MMseqs2/build/bin/mmseqs convertalis db db db_align align_cov_id.tsv --format-output "query,target,fident,qcov,tcov,tlen" --format-mode 4
+    /MMseqs2/build/bin/mmseqs convertalis db db db_align align_cov_id.tsv --format-output "query,target,fident,qcov,tcov,tlen" --format-mode 4 > align_cov_id.log
     """
 }

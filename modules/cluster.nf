@@ -24,6 +24,6 @@ process cluster {
     
     script:
     """
-    /MMseqs2/build/bin/mmseqs cluster db db_clu tmp -c $coverage --min-seq-id $identity --cov-mode $covMode --cluster-mode 2 --cluster-reassign -v 2 > db_clu.log
+    /MMseqs2/build/bin/mmseqs cluster db db_clu tmp -c $coverage --min-seq-id $identity --cov-mode $covMode --cluster-mode 2 --cluster-reassign -v 3 --threads $task.cpus > clustering.log
     """
 }

@@ -31,7 +31,6 @@ process file_for_choose_rep {
     script:
     """
     mkdir -p "$scale"
-    mkdir -p "$scale/changeRepClu$scale"
     python $file_choose_rep_script $seq_clu_analysis $afdb_len $afdb_plddt $len_db $nameDB $scale/all_${scale}_clu_plddt_len.tsv
     """
 }

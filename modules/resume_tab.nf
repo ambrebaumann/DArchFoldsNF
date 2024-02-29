@@ -27,7 +27,6 @@ process resume_tab {
     script:
     """
     mkdir -p "$scale"
-    mkdir -p "$scale/changeRepClu$scale"
     python $create_resume_tab_clu_analysis $id_db $clu_analysis $nameDB $scale/all_${scale}_clu_resume.tsv
     """
 }

@@ -16,7 +16,7 @@ process createtsv {
         path db_clu
 
     output:
-        path "result_seq_clu.tsv"
+        path "result_seq_clu.tsv", emit: clu
     
     script:
     """

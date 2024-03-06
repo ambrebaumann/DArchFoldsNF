@@ -16,7 +16,7 @@ process align {
         path db_clu
 
     output:
-        path "db_align*"
+        path "db_align*", emit: db_align
     
     script:
     """

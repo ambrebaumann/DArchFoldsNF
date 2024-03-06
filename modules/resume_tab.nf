@@ -22,7 +22,7 @@ process resume_tab {
         val scale
 
     output:
-        path "${scale}/*.tsv"
+        path "${scale}/all_${scale}_clu_resume.tsv", emit: clu_resume
     
     script:
     """

@@ -26,7 +26,7 @@ process file_for_choose_rep {
         val scale
 
     output:
-        path "${scale}/*.tsv"
+        path "${scale}/all_${scale}_clu_plddt_len.tsv", emit: file_fr_choose_rep
     
     script:
     """

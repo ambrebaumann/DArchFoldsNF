@@ -15,7 +15,7 @@ process createDB {
         path fasta_file_afdb
 
     output:
-        path "db*"
+        path "db*", emit: db
     
     script:
     """

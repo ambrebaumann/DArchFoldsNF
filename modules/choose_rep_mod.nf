@@ -25,10 +25,10 @@ process choose_rep_mod {
         val scale
 
     output:
-        path "${scale}/changeRepClu${scale}/*annot.tsv"
-        path "${scale}/changeRepClu${scale}/*annot_reduced.tsv"
-        path "${scale}/changeRepClu${scale}/*annot_rep_mb.tsv"
-        path "${scale}/changeRepClu${scale}/*log"
+        path "${scale}/changeRepClu${scale}/*annot.tsv", emit: choose_rep
+        path "${scale}/changeRepClu${scale}/*annot_reduced.tsv", emit: choose_rep_reduced
+        path "${scale}/changeRepClu${scale}/*annot_rep_mb.tsv", emit: choose_rep_mb
+        path "${scale}/changeRepClu${scale}/*log", emit: choose_rep_log
     
     script:
     """

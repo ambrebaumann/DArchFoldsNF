@@ -23,8 +23,8 @@ process create_all_cc {
         path foldseek_clu
 
     output:
-        path "clu_one_line.tsv"
-        path "clu_struct.tsv"
+        path "clu_one_line.tsv", emit: clu_one_line
+        path "clu_struct.tsv", emit: clu_struct
     
     script:
     """

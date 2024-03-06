@@ -20,7 +20,7 @@ process modify_fs {
         path fs_file
 
     output:
-        path "foldseek_corrected.tsv"
+        path "foldseek_corrected.tsv", emit: fs_corrected
     
     script:
     """

@@ -20,7 +20,7 @@ process cluster {
         val covMode
 
     output:
-        path "db_clu*"
+        path "db_clu*", emit: db_clu
     
     script:
     """

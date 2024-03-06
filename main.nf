@@ -26,7 +26,8 @@ def helpMessage() {
 }
 
 def parametersSelected() {
-    log.info """\
+    log.info """
+    
         ----------
         DArchFolds
         ----------

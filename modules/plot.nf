@@ -30,7 +30,7 @@ process plot {
     """
     mkdir -p "$scale"
     mkdir -p "$scale/changeRepClu$scale"
-    Rscript $analysis_plot $choose_rep $scale/changeRepClu$scale/sd_plddt_${scale}.jpg $scale/changeRepClu$scale/plddt_${scale}.jpg ${scale}/changeRepClu${scale}/len_diff_${scale}.jpg
+    Rscript $analysis_plot $choose_rep ${scale}/changeRepClu${scale}/sd_plddt_${scale}.jpg ${scale}/changeRepClu${scale}/plddt_${scale}.jpg ${scale}/changeRepClu${scale}/len_diff_${scale}.jpg
     """
 }
 

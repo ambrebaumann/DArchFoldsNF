@@ -18,8 +18,8 @@ process createID_len_files {
         val nameDB
 
     output:
-        path "*.txt"
-        path "*.tsv"
+        path "*.txt", emit: id_db
+        path "*.tsv", emit: len_db
     
     script:
     """

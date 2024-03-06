@@ -12,11 +12,11 @@ workflow clusterAnalysis {
     main:
     // Type the clusters
     type_clu(clu, Channel.fromPath(params.type_clu_script), id_db, params.yourDB, scale)
-    clu_analysis = type_clu.out
+    clu_analysis = type_clu.out.clu_analysis
 
     // Create the resume table 
     resume_tab(clu_analysis, Channel.fromPath(params.create_resume_tab_clu_analysis), id_db, params.yourDB, scale)
-    resume_tab_file = resume_tab.out
+    resume_tab_file = resume_tab.out.clu_resume
 
     emit:
         clu_analysis

@@ -22,7 +22,7 @@ process type_clu {
         val scale
 
     output:
-        path "${scale}/*.tsv"
+        path "${scale}/all_${scale}_clu_type_size_nb.tsv", emit: clu_analysis
     
     script:
     """

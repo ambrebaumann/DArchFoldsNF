@@ -49,7 +49,7 @@ def create_resume_df(clu_analysis_path, id_set, nameDB) :
     nb_AFDB=('Is_DF', lambda x: (x == False).sum())
     )
 
-    total_nb_myDB = grouped[f'nb_{nameDB}'].sum()
+    total_nb_myDB = grouped[f'nb_myDB'].sum()
     total_nb_AFDB = grouped['nb_AFDB'].sum()
 
     grouped.loc['total'] = [grouped['nb_clu'].sum(), total_nb_myDB, total_nb_AFDB]
